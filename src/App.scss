@@ -25,6 +25,8 @@ header {
   button {
     border: none;
     font-weight: 500;
+    font-size: 16px;
+    color: $very-dark-blue-lmt;
     background: transparent;
     cursor: pointer;
     @include box($width: auto);
