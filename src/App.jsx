@@ -17,7 +17,8 @@ function App() {
     return {
       crescentMoon: isDark ? "/assets/white-crescent-moon.svg" : "/assets/crescent-moon.svg",
       dropdown: isDark ? "/assets/white-dropdown.svg" : "/assets/dropdown.svg",
-      searchIcon: isDark ? "url(/assets/white-search.svg)" : "url(/assets/search.svg)"
+      searchIcon: isDark ? "url(/assets/white-search.svg)" : "url(/assets/search.svg)",
+      mode: isDark ? "Light" : "Dark"
     };
   });
 
@@ -77,7 +78,8 @@ function App() {
     setThemeChange({
       crescentMoon: isDark ? "/assets/white-crescent-moon.svg" : "/assets/crescent-moon.svg",
       dropdown: isDark ? "/assets/white-dropdown.svg" : "/assets/dropdown.svg",
-      searchIcon: isDark ? "url(/assets/white-search.svg)" : "url(/assets/search.svg)"
+      searchIcon: isDark ? "url(/assets/white-search.svg)" : "url(/assets/search.svg)",
+      mode: isDark ? "Light" : "Dark"
     });
   }, []);
   
@@ -89,7 +91,8 @@ function App() {
     setThemeChange({
       crescentMoon: isDark ? "/assets/white-crescent-moon.svg" : "/assets/crescent-moon.svg",
       dropdown: isDark ? "/assets/white-dropdown.svg" : "/assets/dropdown.svg",
-      searchIcon: isDark ? "url(/assets/white-search.svg)" : "url(/assets/search.svg)"
+      searchIcon: isDark ? "url(/assets/white-search.svg)" : "url(/assets/search.svg)",
+      mode: isDark ? "Light" : "Dark"
     });
   }
   
@@ -100,13 +103,13 @@ function App() {
         <h3>Where in the world?</h3>
         <button onClick={toggleTheme} className="text-mode">
           <img id="crescent-moon" src={themeChange.crescentMoon} alt="half moon for dark mode" />
-          Dark Mode
+        {themeChange.mode} Mode
         </button>
       </header>
       
       {/* Main search and filter section */}
       <main>
-        <form>
+        <form onSubmit={e => e.preventDefault()}>
           <input className="mode text-mode" type="text" placeholder="Search for a country..." 
             style={{ backgroundImage: themeChange.searchIcon }} value={countryName} 
             onChange={(e) => searchCountryName(e)} />
@@ -122,6 +125,7 @@ function App() {
               <li onClick={() => searchRegion("Asia")}>Asia</li>
               <li onClick={() => searchRegion("Europe")}>Europe</li>
               <li onClick={() => searchRegion("Oceania")}>Oceania</li>
+              <li onClick={() => searchRegion("Polar")}>Polar</li>
               <li onClick={() => searchRegion("")}>All Regions</li>
             </ul>
           </div> 
