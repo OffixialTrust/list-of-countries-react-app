@@ -97,7 +97,7 @@ function App() {
     <>
       {/* Header with theme toggle */}
       <header className="mode">
-        <h3>Where in the world?</h3>
+        <h2>Where in the world?</h2>
         <button onClick={toggleTheme} className="text-mode">
           <img id="crescent-moon" src={themeChange.crescentMoon} alt="half moon for dark mode" />
           Dark Mode
