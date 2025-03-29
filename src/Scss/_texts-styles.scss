@@ -1,0 +1,15 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.large-text {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.small-bold-text {
+  font-weight: bold;
+}
+
+.small-text {
+  font-weight: normal;
+}

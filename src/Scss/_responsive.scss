@@ -1,0 +1,42 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+@media screen and (min-width: 768px) {
+  $big-pd-inline: 80px;
+  body {
+    font-size: 16px;
+    
+    header.mode {
+      padding: 40px $big-pd-inline;
+      h3 {
+      font-size: 25px;
+      }
+    }
+  
+     main {
+       padding: 40px $big-pd-inline;
+     }
+     
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        width: 450px;
+      }
+    }
+    
+    #countries-container {
+      margin-top: 40px;
+      padding: 0;
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      gap: $big-pd-inline;
+      .individual-country {
+        margin: 0;
+      }
+    }
+    
+    // body closing bracket
+  }
+}

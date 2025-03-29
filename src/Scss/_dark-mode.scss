@@ -1,0 +1,22 @@
+@use "./variables" as *;
+
+.mode {
+  background-color: $white;
+}
+
+.dark-mode {
+  background-color: $very-dark-blue-dmb;
+  color: $white;
+  .mode {
+    background-color: $dark-blue;
+  }
+  .text-mode {
+    color: $white;
+  }
+  form input:focus {
+    outline: 1px solid $white;
+  }
+  .svg-stroke {
+    stroke: $white;
+  }
+}

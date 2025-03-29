@@ -1,0 +1,13 @@
+@mixin box($margin: 0, $padding: 0, $width: 100%, $height: auto) {
+  margin: $margin;
+  padding: $padding;
+  width: $width;
+  height: $height;
+}
+
+@mixin box-shadow {
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+@mixin border-radius {
+  border-radius: 5px;
+}
