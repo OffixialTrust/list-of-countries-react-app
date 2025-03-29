@@ -30,7 +30,7 @@
       margin-top: 40px;
       padding: 0;
       display: grid;
-      grid-template-columns: auto auto auto auto;
+      grid-template-columns: 1fr 1fr;
       gap: $big-pd-inline;
       .individual-country {
         margin: 0;
@@ -38,5 +38,16 @@
     }
     
     // body closing bracket
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  body #countries-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1348px) {
+  body #countries-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
