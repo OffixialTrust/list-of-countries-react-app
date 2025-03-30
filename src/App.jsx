@@ -107,7 +107,7 @@ function App() {
         </button>
       </header>
 
-      <button id="top-btn" className="mode"><a href="#">Top</a></button>
+      <button id="top-btn" className="mode"><a href="#" className="mode">Top</a></button>
       
       {/* Main search and filter section */}
       <main>
