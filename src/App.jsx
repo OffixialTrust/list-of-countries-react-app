@@ -106,6 +106,8 @@ function App() {
         {themeChange.mode} Mode
         </button>
       </header>
+
+      <button id="top-btn" className="mode"><a href="#">Top</a></button>
       
       {/* Main search and filter section */}
       <main>
