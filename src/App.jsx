@@ -77,26 +77,22 @@ function App() {
     } else {
       document.body.classList.remove("dark-mode");
     }
-  
-    setThemeChange({
-      crescentMoon: isDark ? "/assets/white-crescent-moon.svg" : "/assets/crescent-moon.svg",
-      dropdown: isDark ? "/assets/white-dropdown.svg" : "/assets/dropdown.svg",
-      searchIcon: isDark ? "url(/assets/white-search.svg)" : "url(/assets/search.svg)",
-      mode: isDark ? "Light" : "Dark"
-    });
+    toggleMode(isDark);
   }, []);
   
   // Function to toggle dark mode and update localStorage
-  function toggleTheme() {
-    const isDark = document.body.classList.toggle("dark-mode");
-    localStorage.theme = isDark ? "dark" : "light";
-  
+  function toggleMode(isDark) {
     setThemeChange({
       crescentMoon: isDark ? "/assets/white-crescent-moon.svg" : "/assets/crescent-moon.svg",
       dropdown: isDark ? "/assets/white-dropdown.svg" : "/assets/dropdown.svg",
       searchIcon: isDark ? "url(/assets/white-search.svg)" : "url(/assets/search.svg)",
       mode: isDark ? "Light" : "Dark"
     });
+  }
+  function toggleTheme() {
+    const isDark = document.body.classList.toggle("dark-mode");
+    localStorage.theme = isDark ? "dark" : "light";
+    toggleMode(isDark);
   }
   
   return (

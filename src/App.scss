@@ -79,7 +79,7 @@ form {
     display: flex;
     justify-content: space-between;
     @include border-radius;
-    @include box($padding: 20px);
+    @include box($padding: 18px);
     @include box-shadow;
     cursor: pointer;
   }

@@ -22,7 +22,7 @@
       align-items: center;
       justify-content: space-between;
       input {
-        width: 450px;
+        width: 300px;
       }
     }
     
@@ -42,12 +42,23 @@
 }
 
 @media screen and (min-width: 1000px) {
-  body #countries-container {
-    grid-template-columns: 1fr 1fr 1fr;
+  body {
+    #countries-container {
+     grid-template-columns: 1fr 1fr 1fr;
+   }
+  form input {
+    width: 400px;
+   }
   }
+    
 }
 @media screen and (min-width: 1348px) {
-  body #countries-container {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+  body {
+    #countries-container {
+     grid-template-columns: 1fr 1fr 1fr 1fr;
+   }
+  form input {
+    width: 450px;
+   }
   }
 }
