@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'; 
+import { useState, useEffect, useMemo } from 'react'; 
 import './App.scss';
 
 function App() {
   // State to store the list of countries
+  const [allCountries, setAllCountries] = useState([]);
   const [countries, setCountries] = useState([]);
   
   // State to track the selected region
@@ -48,11 +49,13 @@ function App() {
     }     
     
     fetchData("/data.json")
-      .then(result => {
-        setCountries(result.filter(testCountry));
-      })
+      .then(result => setAllCountries(result))
       .catch(error => console.log(`An Error Occurred: ${error.message}`));
-  }, [region, countryName]);
+  }, []);
+
+  useEffect(() => {
+    setCountries(allCountries.filter(testCountry));
+  }, [allCountries, region, countryName]);
   
   // Function to filter countries based on search criteria
   function testCountry(country) {
