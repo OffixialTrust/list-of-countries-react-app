@@ -3,6 +3,7 @@
 @use "./Scss/texts-styles";
 @use "./Scss/dark-mode";
 @use "./Scss/responsive";
+@use "./Scss/details";
 
 body {
   @include box($height: 100vh);
@@ -98,7 +99,9 @@ form {
       @include box($padding: 5px 0);
       cursor: pointer;
       &:hover {
-        opacity: 0.6;
+        opacity: 0.7;
+        font-size: 13.5px;
+
       }
     }
   }

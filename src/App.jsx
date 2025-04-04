@@ -1,40 +1,16 @@
-import { useState, useEffect, useMemo } from 'react'; 
+import { useState, useEffect, useMemo, useCallback } from 'react'; 
 import './App.scss';
+import CountryDetail from './Components/CountryDetail';
+import Body from './Components/CountryList';
+import { Routes, Route, Navigate, useNavigate} from 'react-router-dom';
+
+
+
 
 function App() {
-  // State to store the list of countries
+  // State to handle list of countries 
   const [allCountries, setAllCountries] = useState([]);
-  const [countries, setCountries] = useState([]);
-  
-  // State to track the selected region
-  const [region, setRegion] = useState("");
-  
-  // State to store the country name input for searching
-  const [countryName, setCountryName] = useState("");
-  
-  // State for theme settings, initialized based on localStorage
-  const [themeChange, setThemeChange] = useState(() => {
-    const isDark = localStorage.theme === "dark";
-    return {
-      crescentMoon: isDark ? "/assets/white-crescent-moon.svg" : "/assets/crescent-moon.svg",
-      dropdown: isDark ? "/assets/white-dropdown.svg" : "/assets/dropdown.svg",
-      searchIcon: isDark ? "url(/assets/white-search.svg)" : "url(/assets/search.svg)",
-      mode: isDark ? "Light" : "Dark"
-    };
-  });
 
-  // Updates the selected region and clears the country name filter
-  function searchRegion(region) {
-    setRegion(region);
-    setCountryName("");
-  }
-  
-  // Updates the country name filter and clears the region selection
-  function searchCountryName({ target }) {
-    setCountryName(target.value);
-    setRegion("");
-  }
-  
   // Fetch country data on component mount and when filters change
   useEffect(() => {
     async function fetchData(url) {
@@ -47,27 +23,27 @@ function App() {
         return [];
       }
     }     
-    
+        
     fetchData("/data.json")
       .then(result => setAllCountries(result))
       .catch(error => console.log(`An Error Occurred: ${error.message}`));
   }, []);
+  // Handling navigation
+  const navigate = useNavigate();
+  const handleNavigation = useCallback((path) => navigate(path));
 
-  useEffect(() => {
-    setCountries(allCountries.filter(testCountry));
-  }, [allCountries, region, countryName]);
-  
-  // Function to filter countries based on search criteria
-  function testCountry(country) {
-    if (countryName) {
-      return country.name.toLowerCase().includes(countryName.toLowerCase());
-    }
-    if (region) {
-      return country.region === region;
-    }
-    return true;
-  }
-  
+  // State for theme settings, initialized based on localStorage
+  const [themeChange, setThemeChange] = useState(() => {
+    const isDark = localStorage.theme === "dark";
+    return {
+      backarrow: isDark ? "/assets/white-back-arrow.svg" : "/assets/back-arrow.svg",
+      crescentMoon: isDark ? "/assets/white-crescent-moon.svg" : "/assets/crescent-moon.svg",
+      dropdown: isDark ? "/assets/white-dropdown.svg" : "/assets/dropdown.svg",
+      searchIcon: isDark ? "url(/assets/white-search.svg)" : "url(/assets/search.svg)",
+      mode: isDark ? "Light" : "Dark"
+    };
+  });
+
   // Effect to apply dark mode styling based on localStorage setting
   useEffect(() => {
     const isDark = localStorage.theme === "dark";
@@ -83,12 +59,14 @@ function App() {
   // Function to toggle dark mode and update localStorage
   function toggleMode(isDark) {
     setThemeChange({
+      backarrow: isDark ? "/assets/white-back-arrow.svg" : "/assets/back-arrow.svg",
       crescentMoon: isDark ? "/assets/white-crescent-moon.svg" : "/assets/crescent-moon.svg",
       dropdown: isDark ? "/assets/white-dropdown.svg" : "/assets/dropdown.svg",
       searchIcon: isDark ? "url(/assets/white-search.svg)" : "url(/assets/search.svg)",
       mode: isDark ? "Light" : "Dark"
     });
   }
+
   function toggleTheme() {
     const isDark = document.body.classList.toggle("dark-mode");
     localStorage.theme = isDark ? "dark" : "light";
@@ -106,49 +84,16 @@ function App() {
         </button>
       </header>
 
-      <button id="top-btn" className="mode"><a href="#" className="mode">Top</a></button>
-      
-      {/* Main search and filter section */}
-      <main>
-        <form onSubmit={e => e.preventDefault()}>
-          <input className="mode text-mode" type="text" placeholder="Search for a country..." 
-            style={{ backgroundImage: themeChange.searchIcon }} value={countryName} 
-            onChange={(e) => searchCountryName(e)} />
-          <div className="regions-search-holder">
-            <div className="regions-search mode">
-              <span>{region || "Filter By Region"}</span>
-              <img id="dropdown" src={themeChange.dropdown} alt="dropdown arrow"/>
-            </div>
-            {/* Region selection dropdown */}
-            <ul className="regions-list mode">
-              <li onClick={() => searchRegion("Africa")}>Africa</li>
-              <li onClick={() => searchRegion("Americas")}>Americas</li>
-              <li onClick={() => searchRegion("Asia")}>Asia</li>
-              <li onClick={() => searchRegion("Europe")}>Europe</li>
-              <li onClick={() => searchRegion("Oceania")}>Oceania</li>
-              <li onClick={() => searchRegion("Polar")}>Polar</li>
-              <li onClick={() => searchRegion("")}>All Regions</li>
-            </ul>
-          </div> 
-        </form>
-        
-        {/* Display country cards */}
-        <div id="countries-container">
-          {countries?.map(country => {
-            return ( 
-              <div key={country.name} className="individual-country mode">
-                <img src={country.flags.png} alt={`${country.name}'s flag`} />
-                <div className="country-info">
-                  <h2 className="large-text">{country.name}</h2>
-                  <p className="small-bold-text">Population: <span className="small-text">{(country.population).toLocaleString()}</span></p>
-                  <p className="small-bold-text">Region: <span className="small-text">{country.region}</span></p>
-                  <p className="small-bold-text">Capital: <span className="small-text">{country.capital}</span></p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </main>
+      {/*<Body themeChange={themeChange} handleNavigation={handleNavigation} allCountries={allCountries}/>*/}
+
+      <Routes>
+        <Route path="/" element={<Body themeChange={themeChange} handleNavigation={handleNavigation} allCountries={allCountries}/>} />
+        <Route path="/detail/:name" element={<CountryDetail 
+        allCountries={allCountries}
+        themeChange={themeChange}
+        handleNavigation={handleNavigation}
+        />} />
+      </Routes>
     </>
   );
 }

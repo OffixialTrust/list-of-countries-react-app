@@ -1,0 +1,91 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.back-button {
+  border: none;
+  @include box-shadow;
+  @include border-radius;
+  padding: 8px 16px;
+  margin: $pd-inline * 2;
+  cursor: pointer;
+  font-size: 14px;
+  img {
+    margin-right: 6px;
+    vertical-align: middle;
+    width: 25px;
+  }
+}
+
+#country-details {
+  @include box($padding: $pd-inline * 2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  img {
+   width: 100%;
+   height: 200px;
+  //  object-fit: cover;
+  }
+}
+
+#section-4 {
+  h2 {
+    margin: 0;
+  }
+  span {
+    font-size: 14px;
+   display: inline-block;
+    padding: 6px 8px;
+    margin: 0 6px 6px 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  $big-pd-inline: 80px;
+  .back-button {
+    margin: $big-pd-inline;
+  }
+  
+  #country-details {
+    height: 300px;
+    padding: 0 $big-pd-inline $big-pd-inline;
+    display: grid;
+    gap: 60px;
+    grid-template-areas: 'one one two three' 'one one four four';
+    h3 {
+      font-size: 24px;
+    }
+    #section-1 { 
+    grid-area: one; 
+    width: 550px;
+    height: 100%;
+    }
+  }
+  
+  #section-2 { 
+    grid-area: two; 
+    align-self: center;
+  }
+  #section-3 { 
+    grid-area: three; 
+    align-self: center;
+  }
+  #section-4 { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    grid-area: four; 
+    align-self: start;
+    
+    h4 {
+      display: inline-block;
+      font-size: 18px;
+    }
+    
+    span {
+      margin: 3px;
+    }
+    
+  }
+}
