@@ -29,7 +29,9 @@ function CountryDetail({ handleNavigation, themeChange, allCountries }) {
           Back
           </button>
         <div key={country.name} id="country-details">              
-                  <img id="section-1" src={country.flags.png} alt="{country.name}'s flag" />
+        <div id="section-1">
+          <img src={country.flags.png} alt={`${country.name}'s flag`} />
+        </div>
                   <div id="section-2">
                     <h3 className="large-text">{country.name} </h3>
                     <p className="small-bold-text">Native Name: <span className="small-text">{country.nativeName || "N/A"}</span></p>

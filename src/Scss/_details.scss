@@ -20,14 +20,14 @@
   @include box($padding: $pd-inline * 2);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  img {
-   width: 100%;
-   height: 200px;
-  //  object-fit: cover;
-  }
+  gap: 10px; 
 }
 
+#section-1 {
+  width: 100%;
+  height: auto;
+  // object-fit: contain;
+}
 #section-4 {
   h2 {
     margin: 0;
@@ -55,11 +55,21 @@
     h3 {
       font-size: 24px;
     }
-    #section-1 { 
-    grid-area: one; 
-    width: 550px;
-    height: 100%;
+    #section-1 {
+      grid-area: one;
+      width: 550px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    
+      img {
+        width: 100%;
+        height: 100%;
+        // object-fit: contain;
+        display: block;
+      }
     }
+    
   }
   
   #section-2 { 
