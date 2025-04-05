@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useParams } from "react-router-dom";
 
-function CountryDetail({ handleNavigation, themeChange, allCountries }) {
+function CountryDetail({ handleNavigation, isDark, allCountries }) {
   const { name } = useParams();
   const country = allCountries.find(country => country.name === name);
 
@@ -25,7 +25,7 @@ function CountryDetail({ handleNavigation, themeChange, allCountries }) {
     return (
      <>
         <button className="back-button mode text-mode" onClick={() => handleNavigation("/")}>
-          <img src={themeChange.backarrow} alt="back arrow" /> 
+          <img src={isDark ? "/assets/white-back-arrow.svg" : "/assets/back-arrow.svg"} alt="back arrow" /> 
           Back
           </button>
         <div key={country.name} id="country-details">              

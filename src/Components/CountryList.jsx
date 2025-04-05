@@ -1,6 +1,6 @@
 import { useState, useEffect, memo } from 'react'; 
 
-function Body({allCountries, themeChange, handleNavigation}) {
+function Body({allCountries, handleNavigation, isDark}) {
   
       // State to store the list of countries
   const [countries, setCountries] = useState([]);
@@ -46,12 +46,12 @@ function Body({allCountries, themeChange, handleNavigation}) {
 
         <form onSubmit={e => e.preventDefault()}>
           <input className="mode text-mode" type="text" placeholder="Search for a country..." 
-            style={{ backgroundImage: themeChange.searchIcon }} value={countryName} 
+            style={   isDark ? { backgroundImage: "url(/assets/white-search.svg)" } : { backgroundImage: "url(/assets/search.svg)" }} value={countryName} 
             onChange={(e) => searchCountryName(e)} />
           <div className="regions-search-holder">
             <div className="regions-search mode">
               <span>{region || "Filter By Region"}</span>
-              <img id="dropdown" src={themeChange.dropdown} alt="dropdown arrow"/>
+              <img id="dropdown" src={isDark ? "/assets/white-dropdown.svg" : "/assets/dropdown.svg"} alt="dropdown arrow"/>
             </div>
             {/* Region selection dropdown */}
             <ul className="regions-list mode">
