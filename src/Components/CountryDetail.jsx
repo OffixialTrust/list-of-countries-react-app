@@ -66,7 +66,7 @@ function CountryDetail({ handleNavigation, isDark, allCountries }) {
           {
             noBorderCountries ?
               <span className="mode">No Acknowledged Border Country</span> 
-              : borderCountries?.map(borderCountryName => <span className="mode" key={borderCountryName}>{borderCountryName}</span>)
+              : borderCountries?.map(borderCountryName => <span className="mode" key={borderCountryName} onClick={() => handleNavigation(`/detail/${borderCountryName}`)}>{borderCountryName}</span>)
           }
         </div>
       </div>

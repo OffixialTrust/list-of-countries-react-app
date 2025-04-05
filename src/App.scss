@@ -114,6 +114,7 @@ form {
 #countries-container {
   @include box($padding: 30px);
   .individual-country {
+    cursor: pointer;
     @include box($padding: 0 0 $pd-inline, $margin: 0 0 40px);
     @include box-shadow;
     @include border-radius;
