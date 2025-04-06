@@ -7,7 +7,7 @@
     font-size: 16px;
     
     header.mode {
-      padding: 10px $big-pd-inline;
+      padding: 5px $big-pd-inline;
       h3 {
       font-size: 25px;
       }
@@ -31,7 +31,7 @@
       padding: 0;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: $big-pd-inline;
+      gap: 60px;
       .individual-country {
         margin: 0;
       }

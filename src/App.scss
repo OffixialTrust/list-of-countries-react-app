@@ -17,7 +17,7 @@ body {
 }
 
 header {
-  @include box($padding: 10px $pd-inline);
+  @include box($padding: 5px $pd-inline);
   display: flex;
   @include box-shadow;
   justify-content: space-between;
