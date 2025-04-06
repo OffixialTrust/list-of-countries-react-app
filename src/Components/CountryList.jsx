@@ -42,7 +42,7 @@ function Body({allCountries, handleNavigation, isDark}) {
     <>
       {/* Main search and filter section */}
       <main>
-      <button id="top-btn" className="mode"><a href="#" className="mode">Top</a></button>
+      <a href="#" id="top-btn" className="mode">Top</a>
 
         <form onSubmit={e => e.preventDefault()}>
           <input className="mode text-mode" type="text" placeholder="Search for a country..." 
