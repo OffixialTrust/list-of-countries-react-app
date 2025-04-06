@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import './App.scss';
 import CountryDetail from './Components/CountryDetail';
 import Body from './Components/CountryList';
-import { Routes, Route, Navigate, useNavigate} from 'react-router-dom';
+import { Routes, Route, ScrollRestoration, useNavigate} from 'react-router-dom';
 
 
 
@@ -76,6 +76,8 @@ function App() {
         handleNavigation={handleNavigation}
         />} />
       </Routes>
+
+      <ScrollRestoration />
     </>
   );
 }
