@@ -14,13 +14,13 @@ function Body({allCountries, handleNavigation, isDark}) {
     // Updates the selected region and clears the country name filter
   function searchRegion(region) {
      setRegion(region);
-      setCountryName("");
+     if (countryName) { setCountryName(""); }
   }
 
     // Updates the country name filter and clears the region selection
   function searchCountryName({ target }) {
      setCountryName(target.value);
-     setRegion("");
+     if (region) { setRegion(""); }
   }
     
   useEffect(() => {
